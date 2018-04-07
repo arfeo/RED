@@ -1,0 +1,21 @@
+.DockHomeButton {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding: 0 15px;
+  background-color: #e74c3c;
+  line-height: 40px;
+
+  &.active {
+    background-color: white;
+  }
+
+  .Icon {
+    color: #e74c3c;
+    cursor: pointer;
+
+    &.white {
+      color: white;
+    }
+  }
+}

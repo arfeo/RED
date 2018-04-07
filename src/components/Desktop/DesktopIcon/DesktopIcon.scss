@@ -1,0 +1,28 @@
+.DesktopIcon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  max-width: 100px;
+  margin: 0 40px 40px 0;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  .Icon {
+    min-height: 40px;
+  }
+
+  .title {
+    display: block;
+    max-width: 100px;
+    margin-top: 5px;
+    font-size: 14px;
+    text-align: center;
+    overflow: auto;
+    word-wrap: break-word;
+  }
+}

@@ -1,0 +1,46 @@
+.DockHomeMenu {
+  position: fixed;
+  bottom: 40px;
+  padding: 10px;
+  background-color: white;
+  box-shadow: 3px -3px 4px rgba(9,65,119,0.1);
+  opacity: .95;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  &.hidden {
+    display: none;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    li {
+      margin: 5px 0;
+
+      & > div {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: aliceblue;
+        }
+
+        & > .Icon {
+          margin-top: -2px;
+          margin-right: 10px;
+          font-size: 15px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

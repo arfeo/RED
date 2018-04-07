@@ -1,0 +1,32 @@
+.DockTabs {
+  display: flex;
+  flex-grow: 2;
+  margin: 0 20px;
+  font-weight: 400;
+  color: white;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  .tab {
+    position: relative;
+    top: 2px;
+    margin-right: 10px;
+    border-bottom: 3px solid cornflowerblue;
+    padding: 0 10px;
+    background-color: white;
+    font-size: 15px;
+    color: black;
+
+    &.active {
+      border-bottom: 3px solid #e74c3c;
+    }
+
+    &.minimized {
+      opacity: .5;
+    }
+  }
+}

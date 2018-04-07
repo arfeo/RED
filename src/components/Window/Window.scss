@@ -1,0 +1,31 @@
+.Window {
+  display: block;
+  position: absolute;
+  top: 50px;
+  left: 100px;
+  border: 1px solid #f0f0f0;
+  background-color: white;
+  box-shadow: 0 0 8px rgba(9,65,119,0.3);
+  z-index: 100;
+  overflow: hidden;
+
+  &.minimized {
+    display: none;
+  }
+
+  &.maximized {
+    top: 0;
+    left: 0;
+    transform: none !important;
+    width: 100%;
+    height: calc(100vh - 40px);
+
+    .react-resizable-handle {
+      display: none;
+    }
+  }
+
+  &.react-draggable-dragging {
+    opacity: .8;
+  }
+}

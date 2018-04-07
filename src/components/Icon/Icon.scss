@@ -1,0 +1,14 @@
+.Icon {
+  margin: 0;
+  border: none;
+  padding: 0;
+  background: none;
+
+  &.small {
+    font-size: 25px;
+  }
+
+  &.middle {
+    font-size: 40px;
+  }
+}
