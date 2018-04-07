@@ -22,6 +22,7 @@ const Desktop = (props) => {
     onCloseWindow,
     onAddTab,
     onRemoveTab,
+    onReplaceTab,
   } = props;
 
   const renameSection = (id, type, title, icon, mode) => {
@@ -65,7 +66,10 @@ const Desktop = (props) => {
   };
 
   const maximizeWindow = (win) => {
-    onMaximizeWindow({ ...win, maximized: !win.maximized });
+    const w = { ...win, maximized: !win.maximized };
+
+    onMaximizeWindow(w);
+    onReplaceTab(w);
   };
 
   const closeWindow = (win) => {
@@ -96,6 +100,7 @@ Desktop.propTypes = {
   onCloseWindow: PropTypes.func,
   onAddTab: PropTypes.func,
   onRemoveTab: PropTypes.func,
+  onReplaceTab: PropTypes.func,
 };
 
 export default connect(
@@ -125,6 +130,9 @@ export default connect(
     },
     onRemoveTab: (payload) => {
       dispatch({ type: constants.actions.REMOVE_TAB, payload });
+    },
+    onReplaceTab: (payload) => {
+      dispatch({ type: constants.actions.REPLACE_TAB, payload });
     },
   }),
 )(Desktop);
