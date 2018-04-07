@@ -20,6 +20,15 @@
     width: 100%;
     height: calc(100vh - 40px);
 
+    .WindowContainer {
+      height: calc(100% - 34px);
+    }
+
+    .react-resizable {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
     .react-resizable-handle {
       display: none;
     }
