@@ -19,7 +19,7 @@ const DockHomeButton = (props) => {
         iconType={home === false ? 'menu4' : 'menu3'}
         iconSize="small"
         iconColor={home === false ? 'white' : ''}
-        iconTitle="Меню"
+        iconTitle="Menu"
         onClick={() => { onToggleHomeMenu(!home); }}
       />
     </div>

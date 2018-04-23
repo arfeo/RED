@@ -14,9 +14,9 @@ const WindowButtons = (props) => {
 
   return (
     <div className="WindowButtons">
-      <Icon iconType="minus" iconSpecial="window-buttons" iconTitle="Свернуть" onClick={onMinimize} />
-      <Icon iconType="enlarge" iconSpecial="window-buttons" iconTitle="Развернуть на весь экран" onClick={onMaximize} />
-      <Icon iconType="cross" iconSpecial="window-buttons" iconTitle="Закрыть" onClick={onClose} />
+      <Icon iconType="minus" iconSpecial="window-buttons" iconTitle="Minimize" onClick={onMinimize} />
+      <Icon iconType="enlarge" iconSpecial="window-buttons" iconTitle="Maximize" onClick={onMaximize} />
+      <Icon iconType="cross" iconSpecial="window-buttons" iconTitle="Close" onClick={onClose} />
     </div>
   );
 };
