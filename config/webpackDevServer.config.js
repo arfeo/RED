@@ -90,6 +90,16 @@ module.exports = function(proxy, allowedHost) {
       // it used the same host and port.
       // https://github.com/facebookincubator/create-react-app/issues/2272#issuecomment-302832432
       app.use(noopServiceWorkerMiddleware());
+      app.get('/authorize', function(req, res) {
+        if ( req.query.login === "admin" && req.query.pass === "admin" )
+          setTimeout( function() {
+            res.json({ success: true });
+          }, 500);
+        else
+            setTimeout( function() {
+                res.json({ error: true });
+            }, 500);
+      });
     },
   };
 };

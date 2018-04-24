@@ -7,6 +7,7 @@ import DesktopWorkspace from './DesktopWorkspace/DesktopWorkspace';
 import DesktopDock from './DesktopDock/DesktopDock';
 import { constants } from '../../utils/constants';
 import { objectPropInArray } from '../../utils/tools';
+import ContextMenu from '../ContextMenu/ContextMenu';
 
 import './Desktop.scss';
 
@@ -25,7 +26,7 @@ const Desktop = (props) => {
     onReplaceTab,
   } = props;
 
-  const renameSection = (id, type, title, icon, mode) => {
+  const renameSection = (id, type, title, icon, mode, table) => {
     if (title) {
       onRenameSection({
         id,
@@ -33,6 +34,7 @@ const Desktop = (props) => {
         title,
         icon,
         mode,
+        table,
       });
     }
   };
@@ -43,6 +45,8 @@ const Desktop = (props) => {
         <Window
           key={win.key}
           section={win.section}
+          table={win.table}
+          form={win.form}
           title={sections[objectPropInArray(sections, 'type', win.section)].title}
           onClick={() => openWindow(win)}
           onMinimize={() => minimizeWindow(win)}
@@ -85,6 +89,7 @@ const Desktop = (props) => {
         openWindow={openWindow}
       />
       <DesktopDock openWindow={openWindow} />
+      <ContextMenu />
     </div>
   );
 };

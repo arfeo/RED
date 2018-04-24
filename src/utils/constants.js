@@ -5,9 +5,42 @@ export const constants = {
       {
         id: 1,
         type: 'section1',
-        title: 'Section One',
+        title: 'Section One 3',
         icon: 'file-empty',
         mode: 'user',
+        table: {
+          columns: [
+            {
+              Header: 'Name',
+              accessor: 'name',
+            },
+            {
+              Header: 'Age',
+              accessor: 'age',
+            },
+            {
+              Header: 'Gender',
+              accessor: 'gender',
+            },
+          ],
+          list: [
+            {
+              name: 'John',
+              age: '21',
+              gender: 'M',
+            },
+            {
+              name: 'Maria',
+              age: '25',
+              gender: 'F',
+            },
+            {
+              name: 'Harisson',
+              age: '18',
+              gender: 'M',
+            },
+          ],
+        },
       },
       {
         id: 2,
@@ -15,6 +48,7 @@ export const constants = {
         title: 'Section Two',
         icon: 'file-text2',
         mode: 'user',
+        form: 'feedback',
       },
       {
         id: 3,
@@ -70,5 +104,12 @@ export const constants = {
     DRAG_WINDOW: 'DRAG_WINDOW',
     RESIZE_WINDOW: 'RESIZE_WINDOW',
     CLOSE_WINDOW: 'CLOSE_WINDOW',
+    AUTH_SUCCESS: 'AUTH_SUCCESS',
+    AUTH_ERROR: 'AUTH_ERROR',
+    AUTH_LOAD: 'AUTH_LOAD',
+    SET_CONTEXT: 'SET_CONTEXT',
+    CLEAR_CONTEXT: 'CLEAR_CONTEXT',
+    SET_THEME: 'SET_THEME',
+    SET_BG: 'SET_BG',
   },
 };

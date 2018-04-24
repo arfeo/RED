@@ -12,6 +12,8 @@ import './Window.scss';
 const Window = (props) => {
   const {
     title,
+    table,
+    form,
     section,
     windows,
     onClick,
@@ -45,6 +47,8 @@ const Window = (props) => {
         />
         <WindowContainer
           section={section}
+          table={table || false}
+          form={form || false}
         />
       </div>
     );
@@ -71,6 +75,8 @@ const Window = (props) => {
 Window.propTypes = {
   windows: PropTypes.array,
   title: PropTypes.string,
+  table: PropTypes.any,
+  form: PropTypes.any,
   section: PropTypes.string,
   onClick: PropTypes.func,
   onMinimize: PropTypes.func,
