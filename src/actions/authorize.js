@@ -21,7 +21,6 @@ export const authorizeAction = params => async (dispatch) => {
 
   dispatch({
     type: constants.actions.AUTH_ERROR,
-    payload: { errorText: 'Login or password is wrong!' },
   });
 
   return Promise.reject();

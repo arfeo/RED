@@ -5,10 +5,13 @@ import { PropTypes } from 'prop-types';
 
 import { authorizeAction } from './../../../actions/authorize';
 
+import './AuthForm.scss';
+
 class AuthForm extends Component {
   state = {
     login: '',
     pass: '',
+    isInvalid: false,
   }
 
   handleSubmit = (e) => {
@@ -19,56 +22,50 @@ class AuthForm extends Component {
         this.setState({
           login: '',
           pass: '',
+          isInvalid: true,
         });
       });
   }
 
   handleChange = (e) => {
-    // data[e.target.name] = e.target.value;
     this.setState({
       [e.target.name]: e.target.value,
+      isInvalid: false,
     });
   }
 
   render() {
-    const { auth } = this.props;
-
     return (
-      <Form onSubmit={(e) => { this.handleSubmit(e); }}>
-        <InputGroup>
-          <InputGroupAddon addonType="prepend">Login</InputGroupAddon>
-          <Input
-            name="login"
-            value={this.state.login}
-            onChange={e => this.handleChange(e)}
-          />
-        </InputGroup>
-        <InputGroup>
-          <InputGroupAddon addonType="prepend">Password</InputGroupAddon>
-          <Input
-            type="password"
-            name="pass"
-            value={this.state.pass}
-            onChange={e => this.handleChange(e)}
-          />
-        </InputGroup>
-        <Button size="sm">Login</Button>
-        <div>{auth.errorText ? auth.errorText : ''}</div>
-      </Form>
+      <div className="Auth">
+        <Form onSubmit={(e) => { this.handleSubmit(e); }} className="AuthForm">
+          <InputGroup>
+            <InputGroupAddon addonType="prepend">Login</InputGroupAddon>
+            <Input
+              name="login"
+              value={this.state.login}
+              invalid={this.state.isInvalid}
+              onChange={e => this.handleChange(e)}
+            />
+          </InputGroup>
+          <InputGroup>
+            <InputGroupAddon addonType="prepend">Password</InputGroupAddon>
+            <Input
+              type="password"
+              name="pass"
+              value={this.state.pass}
+              invalid={this.state.isInvalid}
+              onChange={e => this.handleChange(e)}
+            />
+          </InputGroup>
+          <Button size="md">Login</Button>
+        </Form>
+      </div>
     );
   }
 }
 
 AuthForm.propTypes = {
   authorizeAction: PropTypes.func.isRequired,
-  auth: PropTypes.any,
 };
 
-export default connect(
-  state => ({
-    auth: state.auth,
-  }),
-  {
-    authorizeAction,
-  }
-)(AuthForm);
+export default connect(null, { authorizeAction })(AuthForm);
