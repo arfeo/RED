@@ -15,10 +15,14 @@ export const authorizeAction = params => async (dispatch) => {
     });
 
     dispatch(push('/desktop'));
-  } else {
-    dispatch({
-      type: constants.actions.AUTH_ERROR,
-      payload: { errorText: 'Login or password is wrong!' },
-    });
+
+    return Promise.resolve();
   }
+
+  dispatch({
+    type: constants.actions.AUTH_ERROR,
+    payload: { errorText: 'Login or password is wrong!' },
+  });
+
+  return Promise.reject();
 };

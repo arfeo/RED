@@ -1,48 +1,63 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Form, Button, Input, InputGroup, InputGroupAddon } from 'reactstrap';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 
 import { authorizeAction } from './../../../actions/authorize';
 
-const AuthForm = (props) => {
-  const data = {
+class AuthForm extends Component {
+  state = {
     login: '',
     pass: '',
-  };
+  }
 
-  const handleSubmit = (e) => {
+  handleSubmit = (e) => {
     e.preventDefault();
 
-    props.authorizeAction(data);
-  };
+    this.props.authorizeAction({ ...this.state })
+      .catch(() => {
+        this.setState({
+          login: '',
+          pass: '',
+        });
+      });
+  }
 
-  const handleChange = (e) => {
-    data[e.target.name] = e.target.value;
-  };
+  handleChange = (e) => {
+    // data[e.target.name] = e.target.value;
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  }
 
-  return (
-    <Form onSubmit={(e) => { handleSubmit(e); }}>
-      <InputGroup>
-        <InputGroupAddon addonType="prepend">Login</InputGroupAddon>
-        <Input
-          name="login"
-          onChange={e => handleChange(e)}
-        />
-      </InputGroup>
-      <InputGroup>
-        <InputGroupAddon addonType="prepend">Password</InputGroupAddon>
-        <Input
-          type="password"
-          name="pass"
-          onChange={e => handleChange(e)}
-        />
-      </InputGroup>
-      <Button size="sm">Login</Button>
-      <div>{props.auth.errorText ? props.auth.errorText : ''}</div>
-    </Form>
-  );
-};
+  render() {
+    const { auth } = this.props;
+
+    return (
+      <Form onSubmit={(e) => { this.handleSubmit(e); }}>
+        <InputGroup>
+          <InputGroupAddon addonType="prepend">Login</InputGroupAddon>
+          <Input
+            name="login"
+            value={this.state.login}
+            onChange={e => this.handleChange(e)}
+          />
+        </InputGroup>
+        <InputGroup>
+          <InputGroupAddon addonType="prepend">Password</InputGroupAddon>
+          <Input
+            type="password"
+            name="pass"
+            value={this.state.pass}
+            onChange={e => this.handleChange(e)}
+          />
+        </InputGroup>
+        <Button size="sm">Login</Button>
+        <div>{auth.errorText ? auth.errorText : ''}</div>
+      </Form>
+    );
+  }
+}
 
 AuthForm.propTypes = {
   authorizeAction: PropTypes.func.isRequired,
