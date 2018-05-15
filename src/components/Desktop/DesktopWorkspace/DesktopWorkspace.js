@@ -1,34 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { GithubPicker } from 'react-color';
-import DialogModal from '../../DialogModal/DialogModal';
 
+import DialogModal from '../../DialogModal/DialogModal';
 import DesktopIcon from './../DesktopIcon/DesktopIcon';
+
 import { constants } from '../../../utils/constants';
 import { uuid, sortArray } from './../../../utils/tools';
-import setBackground from '../../../sagas/theme';
+
 import './DesktopWorkspace.scss';
 
-class DesktopWorkspace extends React.Component {
+class DesktopWorkspace extends Component {
+  state = {
+    isChange: false,
+  };
+
   constructor(props) {
     super(props);
-    const {
-      home,
-      sections,
-      windows,
-      renameSection,
-      windowsOpened,
-      openWindow,
-      onToggleHomeMenu,
-      setContextMenu,
-      active,
-    } = props;
 
     this.color = props.theme.bg;
-    this.state = {
-      isChange: false,
-    };
   }
 
   drawIcons = () => {
@@ -38,6 +29,7 @@ class DesktopWorkspace extends React.Component {
       renameSection,
       windows,
     } = this.props;
+
     const s = sortArray(sections, 'id');
 
     return s.map((section) => {
@@ -53,10 +45,11 @@ class DesktopWorkspace extends React.Component {
             table={section.table || false}
             renameSection={renameSection}
             onDoubleClick={() => {
-              const win = windows.filter(w => w.section === section.type)[0] ||
-                {
-                  ...constants.windowObject, key: uuid(), section: section.type, table: section.table || false, form: section.form || false,
-                };
+              const win = windows.filter(w => w.section === section.type)[0] || {
+                ...constants.windowObject,
+                key: uuid(),
+                section: section.type,
+              };
               openWindow(win);
             }}
           />
@@ -96,7 +89,7 @@ class DesktopWorkspace extends React.Component {
       <div
         style={{ backgroundColor: this.props.theme.bg }}
         className="DesktopWorkspace"
-        onClick={(e) => { this.clickHandler(); }}
+        onClick={() => this.clickHandler()}
         onContextMenu={(e) => {
           this.contextMenu(e);
         }}
@@ -118,7 +111,7 @@ class DesktopWorkspace extends React.Component {
             this.setState({ isChange: false });
           }}
           onConfirm={() => {
-            if (true) { this.props.setBg(this.color); }
+            this.props.setBg(this.color);
             this.setState({ isChange: false });
           }}
           continueText="Сохранить"
@@ -129,15 +122,12 @@ class DesktopWorkspace extends React.Component {
 }
 
 DesktopWorkspace.propTypes = {
-  home: PropTypes.bool,
   sections: PropTypes.array,
   windows: PropTypes.array,
   theme: PropTypes.any,
-  active: PropTypes.bool,
   renameSection: PropTypes.func,
   windowsOpened: PropTypes.func,
   openWindow: PropTypes.func,
-  onToggleHomeMenu: PropTypes.func,
   setContextMenu: PropTypes.func,
   setBg: PropTypes.func,
 };

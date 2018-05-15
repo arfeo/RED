@@ -30,9 +30,9 @@ module.exports = {
       "always-multiline"
     ],
     "no-underscore-dangle": 0,
-    "import/imports-first": 0,
-    "import/newline-after-import": 0,
-    "import/no-extraneous-dependencies": 0,
+    "import/imports-first": 1,
+    "import/newline-after-import": 1,
+    "import/no-extraneous-dependencies": 1,
     "import/no-named-as-default": 0,
     "import/no-unresolved": 2,
     "import/prefer-default-export": 0,
@@ -56,11 +56,11 @@ module.exports = {
     "jsx-a11y/role-has-required-aria-props": 2,
     "jsx-a11y/role-supports-aria-props": 2,
     "jsx-a11y/no-static-element-interactions": 0,
-    "max-len": 0,
+    "max-len": ["error", {"code": 120}],
     "newline-per-chained-call": 0,
-    "no-console": 0,
+    "no-console": 1,
     "no-unused-vars": 1,
-    "spaced-comment": 0,
+    "spaced-comment": 1,
     "no-use-before-define": 0,
     "prefer-template": 2,
     "react/jsx-filename-extension": 0,
@@ -72,6 +72,6 @@ module.exports = {
     "react/sort-comp": 0,
     "react/require-default-props": 0,
     "react/prefer-stateless-function": 0,
-    "no-return-await": 0
+    "no-return-await": 1
   }
 };

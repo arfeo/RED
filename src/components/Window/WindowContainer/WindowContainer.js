@@ -2,22 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { ResizableBox } from 'react-resizable';
-import ReactTable from 'react-table';
-import 'react-table/react-table.css';
 
 import Settings from '../../../sections/Settings/Settings';
 import Reference from '../../../sections/Reference/Reference';
 import { constants } from '../../../utils/constants';
 
 import './WindowContainer.scss';
-import FormFeedback from '../../Form/FeedBack';
 
 const WindowContainer = (props) => {
   const {
     windows,
     section,
-    table,
-    form,
     onResizeWindow,
     onReplaceTab,
   } = props;
@@ -35,16 +30,6 @@ const WindowContainer = (props) => {
       }
       default:
       {
-        if (table) {
-          return (<ReactTable
-            data={table.list}
-            columns={table.columns}
-            defaultPageSize={5}
-            filterable
-          />);
-        } else if (form) {
-          return (<FormFeedback />);
-        }
         return (
           <div>Section content</div>
         );
@@ -74,8 +59,6 @@ const WindowContainer = (props) => {
 WindowContainer.propTypes = {
   windows: PropTypes.array,
   section: PropTypes.string,
-  form: PropTypes.any,
-  table: PropTypes.any,
   onResizeWindow: PropTypes.func,
   onReplaceTab: PropTypes.func,
 };

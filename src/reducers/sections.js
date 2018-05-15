@@ -6,7 +6,9 @@ export default function sections(state = [], { type, payload }) {
     case constants.actions.RENAME_SECTION:
     {
       const newState = [...state.filter(s => s.type !== payload.type), payload];
+
       saveData('sections', JSON.stringify(newState));
+
       return newState;
     }
     default:

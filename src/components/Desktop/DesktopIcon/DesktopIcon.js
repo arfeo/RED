@@ -69,7 +69,6 @@ class DesktopIcon extends Component {
       iconTitle,
       iconKey,
       table,
-      form,
       renameSection,
       onDoubleClick,
     } = this.props;
@@ -124,7 +123,6 @@ DesktopIcon.propTypes = {
   iconTitle: PropTypes.string,
   iconKey: PropTypes.string,
   table: PropTypes.any,
-  form: PropTypes.any,
   renameSection: PropTypes.func,
   onDoubleClick: PropTypes.func,
   setContextMenu: PropTypes.func,
