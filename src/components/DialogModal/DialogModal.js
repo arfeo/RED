@@ -41,8 +41,13 @@ class DialogModal extends React.Component {
           {confirmContent}
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={onConfirm}>{continueText || 'Продолжить'}</Button>{' '}
-          <Button color="secondary" onClick={onToggle}>{cancelText || 'Отменить'}</Button>
+          <Button color="primary" onClick={onConfirm}>
+            {continueText || 'Продолжить'}
+          </Button>
+          {' '}
+          <Button color="secondary" onClick={onToggle}>
+            {cancelText || 'Отменить'}
+          </Button>
         </ModalFooter>
       </Modal>
     );

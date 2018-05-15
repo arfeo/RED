@@ -1,4 +1,4 @@
-import { constants } from '../utils/constants';
+import { constants } from './../utils/constants';
 
 export default function auth(state = { login: false, text: '' }, { type, payload }) {
   switch (type) {

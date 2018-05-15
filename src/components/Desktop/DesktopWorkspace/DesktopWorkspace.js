@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { GithubPicker } from 'react-color';
 
-import DialogModal from '../../DialogModal/DialogModal';
+import DialogModal from './../../DialogModal/DialogModal';
 import DesktopIcon from './../DesktopIcon/DesktopIcon';
 
-import { constants } from '../../../utils/constants';
+import { constants } from './../../../utils/constants';
 import { uuid, sortArray } from './../../../utils/tools';
 
 import './DesktopWorkspace.scss';
@@ -14,7 +14,7 @@ import './DesktopWorkspace.scss';
 class DesktopWorkspace extends Component {
   state = {
     isChange: false,
-  };
+  }
 
   constructor(props) {
     super(props);
@@ -58,17 +58,17 @@ class DesktopWorkspace extends Component {
 
       return false;
     });
-  };
+  }
 
   clickHandler = () => {
     if (this.home) {
       this.onToggleHomeMenu(false);
     }
-  };
+  }
 
   changeBackground = () => {
     this.setState({ isChange: true });
-  };
+  }
 
   contextMenu = (e) => {
     e.preventDefault();
@@ -83,16 +83,15 @@ class DesktopWorkspace extends Component {
       x: e.pageX,
       y: e.pageY,
     });
-  };
+  }
+
   render() {
     return (
       <div
         style={{ backgroundColor: this.props.theme.bg }}
         className="DesktopWorkspace"
         onClick={() => this.clickHandler()}
-        onContextMenu={(e) => {
-          this.contextMenu(e);
-        }}
+        onContextMenu={e => this.contextMenu(e)}
       >
         {this.drawIcons()}
         {this.props.windowsOpened()}

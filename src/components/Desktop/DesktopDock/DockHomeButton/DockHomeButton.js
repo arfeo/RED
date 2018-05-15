@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Icon from './../../../Icon/Icon';
-import { constants } from '../../../../utils/constants';
+import { constants } from './../../../../utils/constants';
 
 import './DockHomeButton.scss';
 

@@ -1,15 +1,18 @@
-/* eslint-disable no-trailing-spaces */
 import React from 'react';
 import PropTypes from 'prop-types';
 
 const ContextMenuItem = (props) => {
   const handleClick = (e) => {
     e.preventDefault();
+
     props.hideContext();
     props.handleClick();
   };
+
   return (
-    <button className="context-menu-item" onClick={(e) => { handleClick(e); }}>{props.name}</button>
+    <button className="context-menu-item" onClick={e => handleClick(e)}>
+      {props.name}
+    </button>
   );
 };
 

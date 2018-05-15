@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import DockHomeButton from './DockHomeButton/DockHomeButton';
 import DockHomeMenu from './DockHomeMenu/DockHomeMenu';
 import DockActiveWindows from './DockTabs/DockTabs';
-import { constants } from '../../../utils/constants';
+
+import { constants } from './../../../utils/constants';
 
 import './DesktopDock.scss';
 

@@ -1,7 +1,6 @@
 export const getData = (item) => {
   try {
-    const data = localStorage.getItem(item);
-    return data;
+    return localStorage.getItem(item);
   } catch (error) {
     return false;
   }

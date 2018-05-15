@@ -5,7 +5,7 @@ import Draggable from 'react-draggable';
 
 import WindowHeader from './WindowHeader/WindowHeader';
 import WindowContainer from './WindowContainer/WindowContainer';
-import { constants } from '../../utils/constants';
+import { constants } from './../../utils/constants';
 
 import './Window.scss';
 

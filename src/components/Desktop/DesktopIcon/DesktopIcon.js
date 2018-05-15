@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Draggable from 'react-draggable';
 import { connect } from 'react-redux';
-import { constants } from '../../../utils/constants';
+
 import Icon from './../../Icon/Icon';
 import DialogModal from '../../DialogModal/DialogModal';
+
+import { constants } from '../../../utils/constants';
+
 import './DesktopIcon.scss';
 
 class DesktopIcon extends Component {
@@ -35,6 +38,7 @@ class DesktopIcon extends Component {
 
   contextMenu = (e) => {
     e.preventDefault();
+
     this.props.setContextMenu({
       active: true,
       items: [
@@ -55,7 +59,7 @@ class DesktopIcon extends Component {
   renderRenameInput = () => {
     return (
       <input
-        ref={(el) => { this.renameInputRef = el; }}
+        ref={() => this.renameInputRef}
         type="text"
         defaultValue={this.state.renameLabel}
       />

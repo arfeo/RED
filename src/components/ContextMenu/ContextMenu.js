@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
 import ContextMenuItem from './ContextMenuItem';
+
+import { constants } from './../../utils/constants';
+
 import './ContextMenu.scss';
-import { constants } from '../../utils/constants';
 
 const ContextMenu = (props) => {
   const {
@@ -13,11 +16,15 @@ const ContextMenu = (props) => {
     y,
     hideContext,
   } = props;
+
   window.onmousedown = (e) => {
     if (active) {
-      if (e.target.parentNode.getAttribute('id') !== 'context') { hideContext(); }
+      if (e.target.parentNode.getAttribute('id') !== 'context') {
+        hideContext();
+      }
     }
   };
+
   const renderMenu = () => {
     if (active) {
       return (
@@ -38,9 +45,8 @@ const ContextMenu = (props) => {
     }
     return null;
   };
-  return (
-    renderMenu()
-  );
+
+  return renderMenu();
 };
 
 ContextMenu.propTypes = {

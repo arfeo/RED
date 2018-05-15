@@ -1,4 +1,4 @@
-import { constants } from '../utils/constants';
+import { constants } from './../utils/constants';
 import { saveData } from './../utils/storage';
 
 export default function sections(state = [], { type, payload }) {
