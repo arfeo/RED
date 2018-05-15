@@ -29,7 +29,7 @@ class DesktopIcon extends Component {
     });
   };
 
-  toggleRenameContenxt = () => {
+  toggleRenameContext = () => {
     this.setState({
       isRename: !this.state.isRename,
       renameLabel: this.props.iconTitle,
@@ -48,7 +48,7 @@ class DesktopIcon extends Component {
         },
         {
           name: 'Rename',
-          click: this.toggleRenameContenxt,
+          click: this.toggleRenameContext,
         },
       ],
       x: e.pageX,

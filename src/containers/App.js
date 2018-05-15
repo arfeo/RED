@@ -5,7 +5,7 @@ import Desktop from './../components/Desktop/Desktop';
 import './App.scss';
 
 const App = () => {
-  return (<Desktop />);
+  return <Desktop />;
 };
 
 export default App;
