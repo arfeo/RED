@@ -59,7 +59,9 @@ class DesktopIcon extends Component {
   renderRenameInput = () => {
     return (
       <input
-        ref={() => this.renameInputRef}
+        ref={(el) => {
+          this.renameInputRef = el;
+        }}
         type="text"
         defaultValue={this.state.renameLabel}
       />
@@ -72,7 +74,6 @@ class DesktopIcon extends Component {
       iconType,
       iconTitle,
       iconKey,
-      table,
       renameSection,
       onDoubleClick,
     } = this.props;
@@ -110,7 +111,7 @@ class DesktopIcon extends Component {
               onToggle={this.toggleRename}
               onConfirm={() => {
                 this.setState({ isRename: false });
-                renameSection(iconId, iconKey, this.renameInputRef.value, iconType, 'user', table);
+                renameSection(iconId, iconKey, this.renameInputRef.value, iconType, 'user');
               }}
               continueText="Переименовать"
             />
@@ -126,7 +127,6 @@ DesktopIcon.propTypes = {
   iconType: PropTypes.string,
   iconTitle: PropTypes.string,
   iconKey: PropTypes.string,
-  table: PropTypes.any,
   renameSection: PropTypes.func,
   onDoubleClick: PropTypes.func,
   setContextMenu: PropTypes.func,
