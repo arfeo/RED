@@ -27,7 +27,7 @@ const Desktop = (props) => {
     onReplaceTab,
   } = props;
 
-  const renameSection = (id, type, title, icon, mode, table) => {
+  const renameSection = (id, type, title, icon, mode) => {
     if (title) {
       onRenameSection({
         id,
@@ -35,7 +35,6 @@ const Desktop = (props) => {
         title,
         icon,
         mode,
-        table,
       });
     }
   };
@@ -46,8 +45,6 @@ const Desktop = (props) => {
         <Window
           key={win.key}
           section={win.section}
-          table={win.table}
-          form={win.form}
           title={sections[objectPropInArray(sections, 'type', win.section)].title}
           onClick={() => openWindow(win)}
           onMinimize={() => minimizeWindow(win)}

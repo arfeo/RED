@@ -86,7 +86,12 @@ class DesktopIcon extends Component {
         cancel=".title"
         disabled={this.state.isRename}
       >
-        <div onContextMenu={(e) => { this.contextMenu(e); }} className="DesktopIcon">
+        <div
+          onContextMenu={(e) => {
+            this.contextMenu(e);
+          }}
+          className="DesktopIcon"
+        >
           <Icon
             iconType={iconType}
             iconSize="middle"

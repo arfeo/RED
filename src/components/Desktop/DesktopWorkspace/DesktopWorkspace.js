@@ -12,14 +12,14 @@ import { uuid, sortArray } from './../../../utils/tools';
 import './DesktopWorkspace.scss';
 
 class DesktopWorkspace extends Component {
-  state = {
-    isChange: false,
-  }
-
   constructor(props) {
     super(props);
 
     this.color = props.theme.bg;
+
+    this.state = {
+      isChange: false,
+    };
   }
 
   drawIcons = () => {
@@ -41,8 +41,6 @@ class DesktopWorkspace extends Component {
             iconType={section.icon}
             iconTitle={section.title}
             iconKey={section.type}
-            form={section.form || false}
-            table={section.table || false}
             renameSection={renameSection}
             onDoubleClick={() => {
               const win = windows.filter(w => w.section === section.type)[0] || {
