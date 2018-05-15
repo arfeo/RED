@@ -3,9 +3,9 @@ import { Form, Button, Input, InputGroup, InputGroupAddon } from 'reactstrap';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 
-import { authorizeAction } from './../../actions/authorize';
+import { authorizeAction } from './../../../actions/authorize';
 
-const Login = (props) => {
+const AuthForm = (props) => {
   const data = {
     login: '',
     pass: '',
@@ -39,12 +39,12 @@ const Login = (props) => {
         />
       </InputGroup>
       <Button size="sm">Login</Button>
-      <div>{props.auth.text.length > 0 ? props.auth.text : ''}</div>
+      <div>{props.auth.errorText ? props.auth.errorText : ''}</div>
     </Form>
   );
 };
 
-Login.propTypes = {
+AuthForm.propTypes = {
   authorizeAction: PropTypes.func.isRequired,
   auth: PropTypes.any,
 };
@@ -56,4 +56,4 @@ export default connect(
   {
     authorizeAction,
   }
-)(Login);
+)(AuthForm);

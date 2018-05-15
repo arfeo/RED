@@ -11,8 +11,7 @@ import { createHistory } from 'history';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import App from './containers/App';
-import Auth from './components/Login/Auth';
-import Login from './components/Login/Login';
+import Auth from './components/Auth/Auth';
 
 import reducer from './reducers';
 import { constants } from './utils/constants';
@@ -45,7 +44,6 @@ ReactDOM.render(
       <Route path="/" component={Auth}>
         <Route path="/desktop" component={App} />
       </Route>
-      <Route path="/login" component={Login} />
     </Router>
   </Provider>,
   document.getElementById('root')

@@ -3,14 +3,15 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import PropTypes from 'prop-types';
 
-import Login from './Login';
+import AuthForm from './AuthForm/AuthForm';
+import App from './../../containers/App';
 
 class Auth extends Component {
   ensureAuth = (props) => {
     const { isLoggedIn } = props;
 
     if (!isLoggedIn) {
-      props.Redirect('/login');
+      props.Redirect('/');
     }
 
     return true;
@@ -25,17 +26,18 @@ class Auth extends Component {
   }
 
   render() {
-    const { children, isLoggedIn } = this.props;
+    const { isLoggedIn } = this.props;
+
     if (!isLoggedIn) {
-      return <Login />;
+      return <AuthForm />;
     }
-    return <div>{children}</div>;
+
+    return <App />;
   }
 }
 
 Auth.propTypes = {
   isLoggedIn: PropTypes.any.isRequired,
-  children: PropTypes.any,
 };
 
 export default connect(
