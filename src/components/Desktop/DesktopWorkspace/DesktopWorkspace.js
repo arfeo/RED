@@ -83,21 +83,23 @@ class DesktopWorkspace extends Component {
   }
 
   contextMenu = (e) => {
-    e.preventDefault();
+    if (e.target.classList.contains('DesktopWorkspace')) {
+      e.preventDefault();
 
-    this.clickHandler();
+      this.clickHandler();
 
-    this.props.setContextMenu({
-      active: true,
-      items: [
-        {
-          name: 'Set background',
-          click: this.showColorPicker,
-        },
-      ],
-      x: e.pageX,
-      y: e.pageY,
-    });
+      this.props.setContextMenu({
+        active: true,
+        items: [
+          {
+            name: 'Change background color',
+            click: this.showColorPicker,
+          },
+        ],
+        x: e.pageX,
+        y: e.pageY,
+      });
+    }
   }
 
   render() {
@@ -114,7 +116,7 @@ class DesktopWorkspace extends Component {
           isOpened={this.state.isColorPicker}
           isBackdrop={!!true}
           className="modal-sm"
-          confirmTitle="Изменить цвет фона"
+          confirmTitle="Change background color"
           confirmContent={
             <GithubPicker
               width="100%"
@@ -123,7 +125,7 @@ class DesktopWorkspace extends Component {
           }
           onToggle={this.hideColorPicker}
           onConfirm={this.saveBgColor}
-          continueText="Сохранить"
+          continueText="Apply"
         />
       </div>
     );
