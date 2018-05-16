@@ -15,9 +15,11 @@ class AuthForm extends Component {
   }
 
   handleSubmit = (e) => {
+    const { login, pass } = this.state;
+
     e.preventDefault();
 
-    this.props.authorizeAction({ ...this.state })
+    this.props.authorizeAction({ login, pass })
       .catch(() => {
         this.setState({
           login: '',
