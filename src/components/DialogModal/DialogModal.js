@@ -42,11 +42,11 @@ class DialogModal extends React.Component {
         </ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={onConfirm}>
-            {continueText || 'Продолжить'}
+            {continueText || 'Ok'}
           </Button>
           {' '}
           <Button color="secondary" onClick={onToggle}>
-            {cancelText || 'Отменить'}
+            {cancelText || 'Cancel'}
           </Button>
         </ModalFooter>
       </Modal>

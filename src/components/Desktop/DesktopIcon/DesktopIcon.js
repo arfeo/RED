@@ -111,14 +111,14 @@ class DesktopIcon extends Component {
               isOpened={this.state.isRename}
               isBackdrop={!!true}
               className="modal-sm"
-              confirmTitle="Переименовать..."
+              confirmTitle="Rename..."
               confirmContent={this.renderRenameInput()}
               onToggle={this.toggleRename}
               onConfirm={() => {
                 this.setState({ isRename: false });
                 renameSection(iconId, iconKey, this.renameInputRef.value, iconType, 'user');
               }}
-              continueText="Переименовать"
+              continueText="Rename"
             />
           </span>
         </div>
