@@ -59,8 +59,8 @@ class DesktopWorkspace extends Component {
   }
 
   clickHandler = () => {
-    if (this.home) {
-      this.onToggleHomeMenu(false);
+    if (this.props.home) {
+      this.props.onToggleHomeMenu(false);
     }
   }
 
@@ -70,6 +70,9 @@ class DesktopWorkspace extends Component {
 
   contextMenu = (e) => {
     e.preventDefault();
+
+    this.clickHandler();
+
     this.props.setContextMenu({
       active: true,
       items: [
@@ -88,7 +91,7 @@ class DesktopWorkspace extends Component {
       <div
         style={{ backgroundColor: this.props.theme.bg }}
         className="DesktopWorkspace"
-        onClick={() => this.clickHandler()}
+        onClick={this.clickHandler}
         onContextMenu={e => this.contextMenu(e)}
       >
         {this.drawIcons()}
@@ -119,12 +122,14 @@ class DesktopWorkspace extends Component {
 }
 
 DesktopWorkspace.propTypes = {
+  home: PropTypes.bool,
   sections: PropTypes.array,
   windows: PropTypes.array,
   theme: PropTypes.any,
   renameSection: PropTypes.func,
   windowsOpened: PropTypes.func,
   openWindow: PropTypes.func,
+  onToggleHomeMenu: PropTypes.func,
   setContextMenu: PropTypes.func,
   setBg: PropTypes.func,
 };
