@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { push } from 'react-router-redux';
 
 import Icon from './../../../Icon/Icon';
+import DialogModal from './../../../DialogModal/DialogModal';
 import { uuid } from './../../../../utils/tools';
 import { constants } from './../../../../utils/constants';
 
 import './DockHomeMenu.scss';
 
 class DockHomeMenu extends Component {
+  state = {
+    isLogOutConfirm: false,
+  }
+
   drawSections = (mode) => {
     return this.props.sections.map((section) => {
       if (section.mode === mode) {
@@ -35,6 +41,16 @@ class DockHomeMenu extends Component {
     });
   }
 
+  toggleLogOut = () => {
+    if (this.state.isLogOutConfirm === false) {
+      this.props.onToggleHomeMenu(false);
+    }
+
+    this.setState({
+      isLogOutConfirm: !this.state.isLogOutConfirm,
+    });
+  }
+
   render() {
     const { home } = this.props;
 
@@ -44,7 +60,24 @@ class DockHomeMenu extends Component {
           {this.drawSections('user')}
           <li><hr /></li>
           {this.drawSections('service')}
+          <li><hr /></li>
+          <li>
+            <div onClick={this.toggleLogOut}>
+              <Icon iconType="switch" />
+              {'Log out'}
+            </div>
+          </li>
         </ul>
+        <DialogModal
+          isOpened={this.state.isLogOutConfirm}
+          isBackdrop={!!true}
+          className="modal-md"
+          confirmTitle="Log out"
+          confirmContent="Are you sure you want to log out?"
+          onToggle={this.toggleLogOut}
+          onConfirm={this.props.onLogOut}
+          continueText="Log out"
+        />
       </div>
     );
   }
@@ -55,6 +88,8 @@ DockHomeMenu.propTypes = {
   sections: PropTypes.array,
   windows: PropTypes.array,
   openWindow: PropTypes.func,
+  onToggleHomeMenu: PropTypes.func,
+  onLogOut: PropTypes.func,
 };
 
 export default connect(
@@ -66,6 +101,10 @@ export default connect(
   dispatch => ({
     onToggleHomeMenu: (payload) => {
       dispatch({ type: constants.actions.TOGGLE_HOME_MENU, payload });
+    },
+    onLogOut: () => {
+      dispatch({ type: constants.actions.AUTH_LOGOUT });
+      dispatch(push('/'));
     },
   }),
 )(DockHomeMenu);

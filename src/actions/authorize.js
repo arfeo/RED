@@ -10,11 +10,11 @@ export const authorizeAction = params => async (dispatch) => {
 
   if (response.data.success) {
     dispatch({
-      type: constants.actions.AUTH_SUCCESS,
+      type: constants.actions.AUTH_LOGIN,
       payload: { login: params.login },
     });
 
-    dispatch(push('/desktop'));
+    dispatch(push('/'));
 
     return Promise.resolve();
   }

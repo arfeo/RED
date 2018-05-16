@@ -7,7 +7,7 @@ const initState = {
 
 export default function auth(state = initState, { type, payload }) {
   switch (type) {
-    case constants.actions.AUTH_SUCCESS:
+    case constants.actions.AUTH_LOGIN:
     {
       saveData('login', payload.login);
 
@@ -19,6 +19,12 @@ export default function auth(state = initState, { type, payload }) {
     case constants.actions.AUTH_LOAD:
     {
       return state;
+    }
+    case constants.actions.AUTH_LOGOUT:
+    {
+      saveData('login', '');
+
+      return { login: '' };
     }
     default:
     {

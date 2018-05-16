@@ -10,7 +10,6 @@ import { createHistory } from 'history';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import App from './containers/App';
 import Auth from './components/Auth/Auth';
 
 import reducer from './reducers';
@@ -41,9 +40,7 @@ const history = syncHistoryWithStore(createHistory(), store);
 ReactDOM.render(
   <Provider store={store}>
     <Router history={history}>
-      <Route path="/" component={Auth}>
-        <Route path="/desktop" component={App} />
-      </Route>
+      <Route path="/" component={Auth} />
     </Router>
   </Provider>,
   document.getElementById('root')
