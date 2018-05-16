@@ -1,7 +1,6 @@
 export const getData = (item) => {
   try {
-    const data = localStorage.getItem(item);
-    return data;
+    return localStorage.getItem(`RED_${item}`);
   } catch (error) {
     return false;
   }
@@ -9,7 +8,7 @@ export const getData = (item) => {
 
 export const saveData = (item, data) => {
   try {
-    localStorage.setItem(item, data);
+    localStorage.setItem(`RED_${item}`, data);
     return data;
   } catch (error) {
     return false;

@@ -17,13 +17,13 @@ $ git clone https://github.com/arfeo/RED.git && cd RED
 Install dependencies:
 
 ```
-$ npm install
+$ yarn install
 ```
 
 Build the app:
 
 ```
-$ npm run build
+$ yarn build
 ```
 
 ## Powered by

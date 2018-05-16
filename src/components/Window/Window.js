@@ -5,7 +5,8 @@ import Draggable from 'react-draggable';
 
 import WindowHeader from './WindowHeader/WindowHeader';
 import WindowContainer from './WindowContainer/WindowContainer';
-import { constants } from '../../utils/constants';
+
+import { constants } from './../../utils/constants';
 
 import './Window.scss';
 
@@ -43,9 +44,7 @@ const Window = (props) => {
           onMinimize={onMinimize}
           onMaximize={onMaximize}
         />
-        <WindowContainer
-          section={section}
-        />
+        <WindowContainer section={section} />
       </div>
     );
   };

@@ -1,25 +1,37 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { GithubPicker } from 'react-color';
 
+import DialogModal from './../../DialogModal/DialogModal';
 import DesktopIcon from './../DesktopIcon/DesktopIcon';
-import { constants } from '../../../utils/constants';
+
+import { constants } from './../../../utils/constants';
 import { uuid, sortArray } from './../../../utils/tools';
+import { getData, saveData } from './../../../utils/storage';
 
 import './DesktopWorkspace.scss';
 
-const DesktopWorkspace = (props) => {
-  const {
-    home,
-    sections,
-    windows,
-    renameSection,
-    windowsOpened,
-    openWindow,
-    onToggleHomeMenu,
-  } = props;
+class DesktopWorkspace extends Component {
+  constructor(props) {
+    super(props);
 
-  const drawIcons = () => {
+    this.colorPicked = null;
+
+    this.state = {
+      isColorPicker: false,
+      bgColor: getData('bgColor') || '#fff',
+    };
+  }
+
+  drawIcons = () => {
+    const {
+      sections,
+      openWindow,
+      renameSection,
+      windows,
+    } = this.props;
+
     const s = sortArray(sections, 'id');
 
     return s.map((section) => {
@@ -33,8 +45,11 @@ const DesktopWorkspace = (props) => {
             iconKey={section.type}
             renameSection={renameSection}
             onDoubleClick={() => {
-              const win = windows.filter(w => w.section === section.type)[0] ||
-                { ...constants.windowObject, key: uuid(), section: section.type };
+              const win = windows.filter(w => w.section === section.type)[0] || {
+                ...constants.windowObject,
+                key: uuid(),
+                section: section.type,
+              };
               openWindow(win);
             }}
           />
@@ -43,21 +58,77 @@ const DesktopWorkspace = (props) => {
 
       return false;
     });
-  };
+  }
 
-  const clickHandler = () => {
-    if (home) {
-      onToggleHomeMenu(false);
+  clickHandler = () => {
+    if (this.props.home) {
+      this.props.onToggleHomeMenu(false);
     }
-  };
+  }
 
-  return (
-    <div className="DesktopWorkspace" onClick={clickHandler}>
-      {drawIcons()}
-      {windowsOpened()}
-    </div>
-  );
-};
+  showColorPicker = () => {
+    this.setState({ isColorPicker: true });
+  }
+
+  hideColorPicker = () => {
+    this.setState({ isColorPicker: false });
+  }
+
+  saveBgColor = () => {
+    saveData('bgColor', this.colorPicked);
+
+    this.setState({ bgColor: this.colorPicked });
+
+    this.hideColorPicker();
+  }
+
+  contextMenu = (e) => {
+    e.preventDefault();
+
+    this.clickHandler();
+
+    this.props.setContextMenu({
+      active: true,
+      items: [
+        {
+          name: 'Set background',
+          click: this.showColorPicker,
+        },
+      ],
+      x: e.pageX,
+      y: e.pageY,
+    });
+  }
+
+  render() {
+    return (
+      <div
+        style={{ backgroundColor: this.state.bgColor }}
+        className="DesktopWorkspace"
+        onClick={this.clickHandler}
+        onContextMenu={e => this.contextMenu(e)}
+      >
+        {this.drawIcons()}
+        {this.props.windowsOpened()}
+        <DialogModal
+          isOpened={this.state.isColorPicker}
+          isBackdrop={!!true}
+          className="modal-sm"
+          confirmTitle="Изменить цвет фона"
+          confirmContent={
+            <GithubPicker
+              width="100%"
+              onChangeComplete={(color) => { this.colorPicked = color.hex; }}
+            />
+          }
+          onToggle={this.hideColorPicker}
+          onConfirm={this.saveBgColor}
+          continueText="Сохранить"
+        />
+      </div>
+    );
+  }
+}
 
 DesktopWorkspace.propTypes = {
   home: PropTypes.bool,
@@ -67,6 +138,7 @@ DesktopWorkspace.propTypes = {
   windowsOpened: PropTypes.func,
   openWindow: PropTypes.func,
   onToggleHomeMenu: PropTypes.func,
+  setContextMenu: PropTypes.func,
 };
 
 export default connect(
@@ -78,6 +150,9 @@ export default connect(
   dispatch => ({
     onToggleHomeMenu: (payload) => {
       dispatch({ type: constants.actions.TOGGLE_HOME_MENU, payload });
+    },
+    setContextMenu: (payload) => {
+      dispatch({ type: constants.actions.SET_CONTEXT, payload });
     },
   }),
 )(DesktopWorkspace);

@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import Window from './../Window/Window';
 import DesktopWorkspace from './DesktopWorkspace/DesktopWorkspace';
 import DesktopDock from './DesktopDock/DesktopDock';
+import ContextMenu from './../ContextMenu/ContextMenu';
+
 import { constants } from '../../utils/constants';
 import { objectPropInArray } from '../../utils/tools';
 
@@ -85,6 +87,7 @@ const Desktop = (props) => {
         openWindow={openWindow}
       />
       <DesktopDock openWindow={openWindow} />
+      <ContextMenu />
     </div>
   );
 };

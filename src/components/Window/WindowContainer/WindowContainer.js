@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { ResizableBox } from 'react-resizable';
 
-import Settings from '../../../sections/Settings/Settings';
-import Reference from '../../../sections/Reference/Reference';
-import { constants } from '../../../utils/constants';
+import Settings from './../../../sections/Settings/Settings';
+import Reference from './../../../sections/Reference/Reference';
+import { constants } from './../../../utils/constants';
 
 import './WindowContainer.scss';
 

@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Draggable from 'react-draggable';
+import { connect } from 'react-redux';
 
 import Icon from './../../Icon/Icon';
 import DialogModal from '../../DialogModal/DialogModal';
+
+import { constants } from '../../../utils/constants';
 
 import './DesktopIcon.scss';
 
@@ -24,17 +27,46 @@ class DesktopIcon extends Component {
       isRename: !this.state.isRename,
       renameLabel: e.currentTarget.innerHTML,
     });
-  }
+  };
+
+  toggleRenameContext = () => {
+    this.setState({
+      isRename: !this.state.isRename,
+      renameLabel: this.props.iconTitle,
+    });
+  };
+
+  contextMenu = (e) => {
+    e.preventDefault();
+
+    this.props.setContextMenu({
+      active: true,
+      items: [
+        {
+          name: 'Open',
+          click: this.props.onDoubleClick,
+        },
+        {
+          name: 'Rename',
+          click: this.toggleRenameContext,
+        },
+      ],
+      x: e.pageX,
+      y: e.pageY,
+    });
+  };
 
   renderRenameInput = () => {
     return (
       <input
-        ref={(el) => { this.renameInputRef = el; }}
+        ref={(el) => {
+          this.renameInputRef = el;
+        }}
         type="text"
         defaultValue={this.state.renameLabel}
       />
     );
-  }
+  };
 
   render() {
     const {
@@ -54,7 +86,12 @@ class DesktopIcon extends Component {
         cancel=".title"
         disabled={this.state.isRename}
       >
-        <div className="DesktopIcon">
+        <div
+          onContextMenu={(e) => {
+            this.contextMenu(e);
+          }}
+          className="DesktopIcon"
+        >
           <Icon
             iconType={iconType}
             iconSize="middle"
@@ -74,14 +111,14 @@ class DesktopIcon extends Component {
               isOpened={this.state.isRename}
               isBackdrop={!!true}
               className="modal-sm"
-              confirmTitle="Переименовать..."
+              confirmTitle="Rename..."
               confirmContent={this.renderRenameInput()}
               onToggle={this.toggleRename}
               onConfirm={() => {
                 this.setState({ isRename: false });
                 renameSection(iconId, iconKey, this.renameInputRef.value, iconType, 'user');
               }}
-              continueText="Переименовать"
+              continueText="Rename"
             />
           </span>
         </div>
@@ -97,6 +134,14 @@ DesktopIcon.propTypes = {
   iconKey: PropTypes.string,
   renameSection: PropTypes.func,
   onDoubleClick: PropTypes.func,
+  setContextMenu: PropTypes.func,
 };
 
-export default DesktopIcon;
+export default connect(
+  null,
+  dispatch => ({
+    setContextMenu: (payload) => {
+      dispatch({ type: constants.actions.SET_CONTEXT, payload });
+    },
+  })
+)(DesktopIcon);

@@ -1,4 +1,4 @@
-import { constants } from '../utils/constants';
+import { constants } from './../utils/constants';
 
 export default function windows(state = [], { type, payload }) {
   switch (type) {

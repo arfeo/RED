@@ -1,0 +1,31 @@
+.Auth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  .AuthForm {
+    width: 400px;
+    height: auto;
+    padding: 50px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+
+    .input-group {
+      margin-bottom: 20px;
+
+      .input-group-prepend {
+        width: 100px;
+      }
+
+      .input-group-text {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    .btn {
+      width: 100px;
+    }
+  }
+}
