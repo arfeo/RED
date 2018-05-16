@@ -8,6 +8,7 @@ import DesktopIcon from './../DesktopIcon/DesktopIcon';
 
 import { constants } from './../../../utils/constants';
 import { uuid, sortArray } from './../../../utils/tools';
+import { getData, saveData } from './../../../utils/storage';
 
 import './DesktopWorkspace.scss';
 
@@ -15,11 +16,11 @@ class DesktopWorkspace extends Component {
   constructor(props) {
     super(props);
 
-    this.colorPicked = '#fff';
+    this.colorPicked = null;
 
     this.state = {
-      isChange: false,
-      bgColor: '#fff',
+      isColorPicker: false,
+      bgColor: getData('bgColor') || '#fff',
     };
   }
 
@@ -65,8 +66,20 @@ class DesktopWorkspace extends Component {
     }
   }
 
-  changeBackground = () => {
-    this.setState({ isChange: true });
+  showColorPicker = () => {
+    this.setState({ isColorPicker: true });
+  }
+
+  hideColorPicker = () => {
+    this.setState({ isColorPicker: false });
+  }
+
+  saveBgColor = () => {
+    saveData('bgColor', this.colorPicked);
+
+    this.setState({ bgColor: this.colorPicked });
+
+    this.hideColorPicker();
   }
 
   contextMenu = (e) => {
@@ -79,7 +92,7 @@ class DesktopWorkspace extends Component {
       items: [
         {
           name: 'Set background',
-          click: this.changeBackground,
+          click: this.showColorPicker,
         },
       ],
       x: e.pageX,
@@ -98,7 +111,7 @@ class DesktopWorkspace extends Component {
         {this.drawIcons()}
         {this.props.windowsOpened()}
         <DialogModal
-          isOpened={this.state.isChange}
+          isOpened={this.state.isColorPicker}
           isBackdrop={!!true}
           className="modal-sm"
           confirmTitle="Изменить цвет фона"
@@ -108,17 +121,8 @@ class DesktopWorkspace extends Component {
               onChangeComplete={(color) => { this.colorPicked = color.hex; }}
             />
           }
-          onToggle={() => {
-            this.setState({
-              isChange: false,
-            });
-          }}
-          onConfirm={() => {
-            this.setState({
-              isChange: false,
-              bgColor: this.colorPicked,
-            });
-          }}
+          onToggle={this.hideColorPicker}
+          onConfirm={this.saveBgColor}
           continueText="Сохранить"
         />
       </div>
