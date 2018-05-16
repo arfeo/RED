@@ -1,9 +1,16 @@
 import { constants } from './../utils/constants';
+import { getData, saveData } from './../utils/storage';
 
-export default function auth(state = { login: '' }, { type, payload }) {
+const initState = {
+  login: getData('login') || '',
+};
+
+export default function auth(state = initState, { type, payload }) {
   switch (type) {
     case constants.actions.AUTH_SUCCESS:
     {
+      saveData('login', payload.login);
+
       return {
         login: payload.login,
       };

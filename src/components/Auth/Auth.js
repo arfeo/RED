@@ -7,22 +7,30 @@ import AuthForm from './AuthForm/AuthForm';
 import App from './../../containers/App';
 
 class Auth extends Component {
-  ensureAuth = (props) => {
-    const { isLoggedIn } = props;
+  constructor(props) {
+    super(props);
 
-    if (!isLoggedIn) {
-      props.Redirect('/');
-    }
+    this.state = {
+      ensureAuth: (p) => {
+        const { isLoggedIn } = p;
 
-    return true;
+        if (!isLoggedIn) {
+          p.Redirect('/');
+        }
+
+        return true;
+      },
+    };
   }
 
-  componentWillReceiveProps(props) {
-    this.ensureAuth(props);
+  static getDerivedStateFromProps = (nextProps, prevState) => {
+    prevState.ensureAuth(nextProps);
+
+    return null;
   }
 
-  componentWillMount() {
-    this.ensureAuth(this.props);
+  componentDidMount() {
+    this.state.ensureAuth(this.props);
   }
 
   render() {
@@ -37,7 +45,7 @@ class Auth extends Component {
 }
 
 Auth.propTypes = {
-  isLoggedIn: PropTypes.any.isRequired,
+  isLoggedIn: PropTypes.string.isRequired,
 };
 
 export default connect(
