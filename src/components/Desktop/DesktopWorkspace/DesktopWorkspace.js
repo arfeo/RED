@@ -15,10 +15,11 @@ class DesktopWorkspace extends Component {
   constructor(props) {
     super(props);
 
-    this.color = props.theme.bg;
+    this.colorPicked = '#fff';
 
     this.state = {
       isChange: false,
+      bgColor: '#fff',
     };
   }
 
@@ -89,7 +90,7 @@ class DesktopWorkspace extends Component {
   render() {
     return (
       <div
-        style={{ backgroundColor: this.props.theme.bg }}
+        style={{ backgroundColor: this.state.bgColor }}
         className="DesktopWorkspace"
         onClick={this.clickHandler}
         onContextMenu={e => this.contextMenu(e)}
@@ -104,15 +105,19 @@ class DesktopWorkspace extends Component {
           confirmContent={
             <GithubPicker
               width="100%"
-              onChangeComplete={(color) => { this.color = color.hex; }}
+              onChangeComplete={(color) => { this.colorPicked = color.hex; }}
             />
           }
           onToggle={() => {
-            this.setState({ isChange: false });
+            this.setState({
+              isChange: false,
+            });
           }}
           onConfirm={() => {
-            this.props.setBg(this.color);
-            this.setState({ isChange: false });
+            this.setState({
+              isChange: false,
+              bgColor: this.colorPicked,
+            });
           }}
           continueText="Сохранить"
         />
@@ -125,13 +130,11 @@ DesktopWorkspace.propTypes = {
   home: PropTypes.bool,
   sections: PropTypes.array,
   windows: PropTypes.array,
-  theme: PropTypes.any,
   renameSection: PropTypes.func,
   windowsOpened: PropTypes.func,
   openWindow: PropTypes.func,
   onToggleHomeMenu: PropTypes.func,
   setContextMenu: PropTypes.func,
-  setBg: PropTypes.func,
 };
 
 export default connect(
@@ -139,7 +142,6 @@ export default connect(
     home: state.home,
     sections: state.sections,
     windows: state.windows,
-    theme: state.theme,
   }),
   dispatch => ({
     onToggleHomeMenu: (payload) => {
@@ -147,9 +149,6 @@ export default connect(
     },
     setContextMenu: (payload) => {
       dispatch({ type: constants.actions.SET_CONTEXT, payload });
-    },
-    setBg: (payload) => {
-      dispatch({ type: constants.actions.SET_THEME, payload });
     },
   }),
 )(DesktopWorkspace);
