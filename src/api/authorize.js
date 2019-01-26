@@ -1,5 +1,5 @@
 import axios from 'axios';
 
-export const auhtorizeApi = (params) => {
+export const authorizeApi = (params) => {
   return axios.get('/authorize', { params });
 };

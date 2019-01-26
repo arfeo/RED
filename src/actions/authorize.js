@@ -1,12 +1,12 @@
 import { push } from 'react-router-redux';
 
-import { auhtorizeApi } from './../api/authorize';
+import { authorizeApi } from './../api/authorize';
 import { constants } from './../utils/constants';
 
 export const authorizeAction = params => async (dispatch) => {
   dispatch({ type: constants.actions.AUTH_LOAD });
 
-  const response = await auhtorizeApi(params);
+  const response = await authorizeApi(params);
 
   if (response.data.success) {
     dispatch({
