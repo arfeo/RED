@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import Icon from './../../Icon/Icon';
 import DialogModal from '../../DialogModal/DialogModal';
 
-import { constants } from '../../../utils/constants';
+import { ACTIONS } from '../../../utils/constants';
 
 import './DesktopIcon.scss';
 
@@ -141,7 +141,7 @@ export default connect(
   null,
   dispatch => ({
     setContextMenu: (payload) => {
-      dispatch({ type: constants.actions.SET_CONTEXT, payload });
+      dispatch({ type: ACTIONS.SET_CONTEXT, payload });
     },
   })
 )(DesktopIcon);

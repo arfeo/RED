@@ -6,7 +6,7 @@ import Draggable from 'react-draggable';
 import WindowHeader from './WindowHeader/WindowHeader';
 import WindowContainer from './WindowContainer/WindowContainer';
 
-import { constants } from './../../utils/constants';
+import { ACTIONS } from './../../utils/constants';
 
 import './Window.scss';
 
@@ -84,7 +84,7 @@ export default connect(
   }),
   dispatch => ({
     onDragWindow: (payload) => {
-      dispatch({ type: constants.actions.DRAG_WINDOW, payload });
+      dispatch({ type: ACTIONS.DRAG_WINDOW, payload });
     },
   }),
 )(Window);

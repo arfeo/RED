@@ -1,16 +1,16 @@
-import { constants } from './../utils/constants';
+import { ACTIONS } from './../utils/constants';
 
 export default function windows(state = [], { type, payload }) {
   switch (type) {
-    case constants.actions.OPEN_WINDOW:
-    case constants.actions.MINIMIZE_WINDOW:
-    case constants.actions.MAXIMIZE_WINDOW:
-    case constants.actions.DRAG_WINDOW:
-    case constants.actions.RESIZE_WINDOW:
+    case ACTIONS.OPEN_WINDOW:
+    case ACTIONS.MINIMIZE_WINDOW:
+    case ACTIONS.MAXIMIZE_WINDOW:
+    case ACTIONS.DRAG_WINDOW:
+    case ACTIONS.RESIZE_WINDOW:
     {
       return [...state.filter(w => w.section !== payload.section), payload];
     }
-    case constants.actions.CLOSE_WINDOW:
+    case ACTIONS.CLOSE_WINDOW:
     {
       return [...state.filter(w => w.section !== payload.section)];
     }

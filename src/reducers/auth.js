@@ -1,4 +1,4 @@
-import { constants } from './../utils/constants';
+import { ACTIONS } from './../utils/constants';
 import { getData, saveData } from './../utils/storage';
 
 const initState = {
@@ -7,7 +7,7 @@ const initState = {
 
 export default function auth(state = initState, { type, payload }) {
   switch (type) {
-    case constants.actions.AUTH_LOGIN:
+    case ACTIONS.AUTH_LOGIN:
     {
       saveData('login', payload.login);
 
@@ -15,12 +15,12 @@ export default function auth(state = initState, { type, payload }) {
         login: payload.login,
       };
     }
-    case constants.actions.AUTH_ERROR:
-    case constants.actions.AUTH_LOAD:
+    case ACTIONS.AUTH_ERROR:
+    case ACTIONS.AUTH_LOAD:
     {
       return state;
     }
-    case constants.actions.AUTH_LOGOUT:
+    case ACTIONS.AUTH_LOGOUT:
     {
       saveData('login', '');
 

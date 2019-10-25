@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { constants } from '../../../../utils/constants';
+import { ACTIONS } from '../../../../utils/constants';
 import { uuid, objectPropInArray } from './../../../../utils/tools';
 
 import './DockTabs.scss';
@@ -68,7 +68,7 @@ export default connect(
   }),
   dispatch => ({
     onOpenWindow: (payload) => {
-      dispatch({ type: constants.actions.OPEN_WINDOW, payload });
+      dispatch({ type: ACTIONS.OPEN_WINDOW, payload });
     },
   }),
 )(DockTabs);

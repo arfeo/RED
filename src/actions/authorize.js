@@ -1,16 +1,16 @@
 import { push } from 'react-router-redux';
 
 import { authorizeApi } from './../api/authorize';
-import { constants } from './../utils/constants';
+import { ACTIONS } from './../utils/constants';
 
 export const authorizeAction = params => async (dispatch) => {
-  dispatch({ type: constants.actions.AUTH_LOAD });
+  dispatch({ type: ACTIONS.AUTH_LOAD });
 
   const response = await authorizeApi(params);
 
   if (response.data.success) {
     dispatch({
-      type: constants.actions.AUTH_LOGIN,
+      type: ACTIONS.AUTH_LOGIN,
       payload: { login: params.login },
     });
 
@@ -20,7 +20,7 @@ export const authorizeAction = params => async (dispatch) => {
   }
 
   dispatch({
-    type: constants.actions.AUTH_ERROR,
+    type: ACTIONS.AUTH_ERROR,
   });
 
   return Promise.reject();

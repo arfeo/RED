@@ -6,7 +6,7 @@ import DockHomeButton from './DockHomeButton/DockHomeButton';
 import DockHomeMenu from './DockHomeMenu/DockHomeMenu';
 import DockActiveWindows from './DockTabs/DockTabs';
 
-import { constants } from './../../../utils/constants';
+import { ACTIONS } from './../../../utils/constants';
 
 import './DesktopDock.scss';
 
@@ -44,7 +44,7 @@ export default connect(
   }),
   dispatch => ({
     onToggleHomeMenu: (payload) => {
-      dispatch({ type: constants.actions.TOGGLE_HOME_MENU, payload });
+      dispatch({ type: ACTIONS.TOGGLE_HOME_MENU, payload });
     },
   }),
 )(DesktopDock);

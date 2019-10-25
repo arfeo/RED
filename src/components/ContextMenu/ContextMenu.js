@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import ContextMenuItem from './ContextMenuItem';
 
-import { constants } from './../../utils/constants';
+import { ACTIONS } from './../../utils/constants';
 
 import './ContextMenu.scss';
 
@@ -66,10 +66,10 @@ export default connect(
   }),
   dispatch => ({
     hideContext: () => {
-      dispatch({ type: constants.actions.CLEAR_CONTEXT });
+      dispatch({ type: ACTIONS.CLEAR_CONTEXT });
     },
     setContextMenu: (payload) => {
-      dispatch({ type: constants.actions.SET_CONTEXT, payload });
+      dispatch({ type: ACTIONS.SET_CONTEXT, payload });
     },
   })
 )(ContextMenu);

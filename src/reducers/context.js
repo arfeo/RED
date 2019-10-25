@@ -1,4 +1,4 @@
-import { constants } from './../utils/constants';
+import { ACTIONS } from './../utils/constants';
 
 const initState = {
   active: false,
@@ -11,7 +11,7 @@ let block = false;
 
 export default function context(state = initState, { type, payload }) {
   switch (type) {
-    case constants.actions.SET_CONTEXT:
+    case ACTIONS.SET_CONTEXT:
     {
       setTimeout(() => {
         block = false;
@@ -25,7 +25,7 @@ export default function context(state = initState, { type, payload }) {
 
       return payload;
     }
-    case constants.actions.CLEAR_CONTEXT:
+    case ACTIONS.CLEAR_CONTEXT:
     {
       return initState;
     }

@@ -6,7 +6,7 @@ import { GithubPicker } from 'react-color';
 import DialogModal from './../../DialogModal/DialogModal';
 import DesktopIcon from './../DesktopIcon/DesktopIcon';
 
-import { constants } from './../../../utils/constants';
+import { ACTIONS, WINDOW_OBJECT } from './../../../utils/constants';
 import { uuid, sortArray } from './../../../utils/tools';
 import { getData, saveData } from './../../../utils/storage';
 
@@ -46,7 +46,7 @@ class DesktopWorkspace extends Component {
             renameSection={renameSection}
             onDoubleClick={() => {
               const win = windows.filter(w => w.section === section.type)[0] || {
-                ...constants.windowObject,
+                ...WINDOW_OBJECT,
                 key: uuid(),
                 section: section.type,
               };
@@ -151,10 +151,10 @@ export default connect(
   }),
   dispatch => ({
     onToggleHomeMenu: (payload) => {
-      dispatch({ type: constants.actions.TOGGLE_HOME_MENU, payload });
+      dispatch({ type: ACTIONS.TOGGLE_HOME_MENU, payload });
     },
     setContextMenu: (payload) => {
-      dispatch({ type: constants.actions.SET_CONTEXT, payload });
+      dispatch({ type: ACTIONS.SET_CONTEXT, payload });
     },
   }),
 )(DesktopWorkspace);

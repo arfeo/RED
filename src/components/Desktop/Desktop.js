@@ -7,7 +7,7 @@ import DesktopWorkspace from './DesktopWorkspace/DesktopWorkspace';
 import DesktopDock from './DesktopDock/DesktopDock';
 import ContextMenu from './../ContextMenu/ContextMenu';
 
-import { constants } from '../../utils/constants';
+import { ACTIONS } from '../../utils/constants';
 import { objectPropInArray } from '../../utils/tools';
 
 import './Desktop.scss';
@@ -114,28 +114,28 @@ export default connect(
   }),
   dispatch => ({
     onRenameSection: (payload) => {
-      dispatch({ type: constants.actions.RENAME_SECTION, payload });
+      dispatch({ type: ACTIONS.RENAME_SECTION, payload });
     },
     onOpenWindow: (payload) => {
-      dispatch({ type: constants.actions.OPEN_WINDOW, payload });
+      dispatch({ type: ACTIONS.OPEN_WINDOW, payload });
     },
     onMinimizeWindow: (payload) => {
-      dispatch({ type: constants.actions.MINIMIZE_WINDOW, payload });
+      dispatch({ type: ACTIONS.MINIMIZE_WINDOW, payload });
     },
     onMaximizeWindow: (payload) => {
-      dispatch({ type: constants.actions.MAXIMIZE_WINDOW, payload });
+      dispatch({ type: ACTIONS.MAXIMIZE_WINDOW, payload });
     },
     onCloseWindow: (payload) => {
-      dispatch({ type: constants.actions.CLOSE_WINDOW, payload });
+      dispatch({ type: ACTIONS.CLOSE_WINDOW, payload });
     },
     onAddTab: (payload) => {
-      dispatch({ type: constants.actions.ADD_TAB, payload });
+      dispatch({ type: ACTIONS.ADD_TAB, payload });
     },
     onRemoveTab: (payload) => {
-      dispatch({ type: constants.actions.REMOVE_TAB, payload });
+      dispatch({ type: ACTIONS.REMOVE_TAB, payload });
     },
     onReplaceTab: (payload) => {
-      dispatch({ type: constants.actions.REPLACE_TAB, payload });
+      dispatch({ type: ACTIONS.REPLACE_TAB, payload });
     },
   }),
 )(Desktop);

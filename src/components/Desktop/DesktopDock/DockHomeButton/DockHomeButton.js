@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Icon from './../../../Icon/Icon';
-import { constants } from './../../../../utils/constants';
+import { ACTIONS } from './../../../../utils/constants';
 
 import './DockHomeButton.scss';
 
@@ -37,7 +37,7 @@ export default connect(
   }),
   dispatch => ({
     onToggleHomeMenu: (payload) => {
-      dispatch({ type: constants.actions.TOGGLE_HOME_MENU, payload });
+      dispatch({ type: ACTIONS.TOGGLE_HOME_MENU, payload });
     },
   }),
 )(DockHomeButton);

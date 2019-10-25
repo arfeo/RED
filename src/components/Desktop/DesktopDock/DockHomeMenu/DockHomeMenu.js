@@ -6,7 +6,7 @@ import { push } from 'react-router-redux';
 import Icon from './../../../Icon/Icon';
 import DialogModal from './../../../DialogModal/DialogModal';
 import { uuid } from './../../../../utils/tools';
-import { constants } from './../../../../utils/constants';
+import { ACTIONS, WINDOW_OBJECT } from './../../../../utils/constants';
 
 import './DockHomeMenu.scss';
 
@@ -23,7 +23,7 @@ class DockHomeMenu extends Component {
             <div
               onClick={() => {
                 const win = this.props.windows.filter(w => w.section === section.type)[0] || {
-                  ...constants.windowObject,
+                  ...WINDOW_OBJECT,
                   key: uuid(),
                   section: section.type,
                 };
@@ -100,10 +100,10 @@ export default connect(
   }),
   dispatch => ({
     onToggleHomeMenu: (payload) => {
-      dispatch({ type: constants.actions.TOGGLE_HOME_MENU, payload });
+      dispatch({ type: ACTIONS.TOGGLE_HOME_MENU, payload });
     },
     onLogOut: () => {
-      dispatch({ type: constants.actions.AUTH_LOGOUT });
+      dispatch({ type: ACTIONS.AUTH_LOGOUT });
       dispatch(push('/'));
     },
   }),

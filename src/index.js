@@ -13,14 +13,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Auth from './components/Auth/Auth';
 
 import reducer from './reducers';
-import { constants } from './utils/constants';
+import { INITIAL_STORE } from './utils/constants';
 import { getData } from './utils/storage';
 
 import registerServiceWorker from './registerServiceWorker';
 
 import './index.css';
 
-const initialStore = { ...constants.initialStore };
+const initialStore = { ...INITIAL_STORE };
 const storedSections = JSON.parse(getData('sections'));
 
 if (storedSections) {

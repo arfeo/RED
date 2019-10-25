@@ -5,7 +5,7 @@ import { ResizableBox } from 'react-resizable';
 
 import Settings from './../../../sections/Settings/Settings';
 import Reference from './../../../sections/Reference/Reference';
-import { constants } from './../../../utils/constants';
+import { ACTIONS } from './../../../utils/constants';
 
 import './WindowContainer.scss';
 
@@ -70,10 +70,10 @@ export default connect(
   }),
   dispatch => ({
     onResizeWindow: (payload) => {
-      dispatch({ type: constants.actions.RESIZE_WINDOW, payload });
+      dispatch({ type: ACTIONS.RESIZE_WINDOW, payload });
     },
     onReplaceTab: (payload) => {
-      dispatch({ type: constants.actions.REPLACE_TAB, payload });
+      dispatch({ type: ACTIONS.REPLACE_TAB, payload });
     },
   }),
 )(WindowContainer);
