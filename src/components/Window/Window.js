@@ -6,7 +6,7 @@ import Draggable from 'react-draggable';
 import WindowHeader from './WindowHeader/WindowHeader';
 import WindowContainer from './WindowContainer/WindowContainer';
 
-import { ACTIONS } from './../../utils/constants';
+import { ACTIONS } from '../../utils/constants';
 
 import './Window.scss';
 

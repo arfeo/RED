@@ -1,19 +1,20 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { push } from 'react-router-redux';
 
-import Icon from './../../../Icon/Icon';
-import DialogModal from './../../../DialogModal/DialogModal';
-import { uuid } from './../../../../utils/tools';
-import { ACTIONS, WINDOW_OBJECT } from './../../../../utils/constants';
+import Icon from '../../../Icon/Icon';
+import DialogModal from '../../../DialogModal/DialogModal';
+
+import { uuid } from '../../../../utils/tools';
+import { ACTIONS, WINDOW_OBJECT } from '../../../../utils/constants';
 
 import './DockHomeMenu.scss';
 
-class DockHomeMenu extends Component {
+class DockHomeMenu extends React.Component {
   state = {
     isLogOutConfirm: false,
-  }
+  };
 
   drawSections = (mode) => {
     return this.props.sections.map((section) => {
@@ -31,7 +32,9 @@ class DockHomeMenu extends Component {
                 this.props.openWindow(win);
               }}
             >
-              <Icon iconType={section.icon} />{' '}{section.title}
+              <Icon iconType={section.icon} />
+              {' '}
+              {section.title}
             </div>
           </li>
         );
@@ -46,9 +49,9 @@ class DockHomeMenu extends Component {
       this.props.onToggleHomeMenu(false);
     }
 
-    this.setState({
-      isLogOutConfirm: !this.state.isLogOutConfirm,
-    });
+    this.setState(state => ({
+      isLogOutConfirm: !state.isLogOutConfirm,
+    }));
   }
 
   render() {
@@ -58,19 +61,23 @@ class DockHomeMenu extends Component {
       <div className={`DockHomeMenu ${home === false ? 'hidden' : ''}`}>
         <ul>
           {this.drawSections('user')}
-          <li><hr /></li>
+          <li>
+            <hr />
+          </li>
           {this.drawSections('service')}
-          <li><hr /></li>
+          <li>
+            <hr />
+          </li>
           <li>
             <div onClick={this.toggleLogOut}>
               <Icon iconType="switch" />
-              {'Log out'}
+              Log out
             </div>
           </li>
         </ul>
         <DialogModal
           isOpened={this.state.isLogOutConfirm}
-          isBackdrop={!!true}
+          isBackdrop
           className="modal-md"
           confirmTitle="Log out"
           confirmContent="Are you sure you want to log out?"

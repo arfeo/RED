@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { ACTIONS } from '../../../../utils/constants';
-import { uuid, objectPropInArray } from './../../../../utils/tools';
+import { uuid, objectPropInArray } from '../../../../utils/tools';
 
 import './DockTabs.scss';
 

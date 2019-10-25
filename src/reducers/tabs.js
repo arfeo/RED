@@ -1,5 +1,5 @@
-import { ACTIONS } from './../utils/constants';
-import { objectPropInArray } from './../utils/tools';
+import { ACTIONS } from '../utils/constants';
+import { objectPropInArray } from '../utils/tools';
 
 export default function tabs(state = [], { type, payload }) {
   switch (type) {

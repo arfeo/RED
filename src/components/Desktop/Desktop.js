@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import Window from './../Window/Window';
+import Window from '../Window/Window';
 import DesktopWorkspace from './DesktopWorkspace/DesktopWorkspace';
 import DesktopDock from './DesktopDock/DesktopDock';
-import ContextMenu from './../ContextMenu/ContextMenu';
+import ContextMenu from '../ContextMenu/ContextMenu';
 
 import { ACTIONS } from '../../utils/constants';
 import { objectPropInArray } from '../../utils/tools';

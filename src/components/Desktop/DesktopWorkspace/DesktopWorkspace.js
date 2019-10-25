@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { GithubPicker } from 'react-color';
 
-import DialogModal from './../../DialogModal/DialogModal';
-import DesktopIcon from './../DesktopIcon/DesktopIcon';
+import DialogModal from '../../DialogModal/DialogModal';
+import DesktopIcon from '../DesktopIcon/DesktopIcon';
 
-import { ACTIONS, WINDOW_OBJECT } from './../../../utils/constants';
-import { uuid, sortArray } from './../../../utils/tools';
-import { getData, saveData } from './../../../utils/storage';
+import { ACTIONS, WINDOW_OBJECT } from '../../../utils/constants';
+import { uuid, sortArray } from '../../../utils/tools';
+import { getData, saveData } from '../../../utils/storage';
 
 import './DesktopWorkspace.scss';
 
-class DesktopWorkspace extends Component {
+class DesktopWorkspace extends React.Component {
   constructor(props) {
     super(props);
 
@@ -117,7 +117,7 @@ class DesktopWorkspace extends Component {
           isBackdrop
           className="modal-sm"
           confirmTitle="Change background color"
-          confirmContent={
+          confirmContent={(
             <GithubPicker
               width="100%"
               triangle="hide"
@@ -142,7 +142,7 @@ class DesktopWorkspace extends Component {
               ]}
               onChangeComplete={(color) => { this.colorPicked = color.hex; }}
             />
-          }
+          )}
           onToggle={this.hideColorPicker}
           onConfirm={this.saveBgColor}
           continueText="Apply"

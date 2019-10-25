@@ -1,18 +1,26 @@
-import React, { Component } from 'react';
-import { Form, Button, Input, InputGroup, InputGroupAddon } from 'reactstrap';
-import { connect } from 'react-redux';
-import { PropTypes } from 'prop-types';
+import * as React from 'react';
 
-import { authorizeAction } from './../../../actions/authorize';
+import {
+  Form,
+  Button,
+  Input,
+  InputGroup,
+  InputGroupAddon,
+} from 'reactstrap';
+
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+import { authorizeAction } from '../../../actions/authorize';
 
 import './AuthForm.scss';
 
-class AuthForm extends Component {
+class AuthForm extends React.Component {
   state = {
     login: '',
     pass: '',
     isInvalid: false,
-  }
+  };
 
   handleSubmit = (e) => {
     const { login, pass } = this.state;
@@ -41,7 +49,9 @@ class AuthForm extends Component {
       <div className="Auth">
         <Form onSubmit={(e) => { this.handleSubmit(e); }} className="AuthForm">
           <InputGroup>
-            <InputGroupAddon addonType="prepend">Login</InputGroupAddon>
+            <InputGroupAddon addonType="prepend">
+              Login
+            </InputGroupAddon>
             <Input
               name="login"
               value={this.state.login}
@@ -50,7 +60,9 @@ class AuthForm extends Component {
             />
           </InputGroup>
           <InputGroup>
-            <InputGroupAddon addonType="prepend">Password</InputGroupAddon>
+            <InputGroupAddon addonType="prepend">
+              Password
+            </InputGroupAddon>
             <Input
               type="password"
               name="pass"
@@ -59,7 +71,9 @@ class AuthForm extends Component {
               onChange={e => this.handleChange(e)}
             />
           </InputGroup>
-          <Button size="md">Login</Button>
+          <Button size="md">
+            Login
+          </Button>
         </Form>
       </div>
     );

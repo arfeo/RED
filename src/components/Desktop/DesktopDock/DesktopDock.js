@@ -6,7 +6,7 @@ import DockHomeButton from './DockHomeButton/DockHomeButton';
 import DockHomeMenu from './DockHomeMenu/DockHomeMenu';
 import DockActiveWindows from './DockTabs/DockTabs';
 
-import { ACTIONS } from './../../../utils/constants';
+import { ACTIONS } from '../../../utils/constants';
 
 import './DesktopDock.scss';
 

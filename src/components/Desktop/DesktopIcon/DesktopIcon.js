@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
 import Draggable from 'react-draggable';
 import { connect } from 'react-redux';
 
-import Icon from './../../Icon/Icon';
+import Icon from '../../Icon/Icon';
 import DialogModal from '../../DialogModal/DialogModal';
 
 import { ACTIONS } from '../../../utils/constants';
 
 import './DesktopIcon.scss';
 
-class DesktopIcon extends Component {
+class DesktopIcon extends React.Component {
   constructor(props) {
     super(props);
 
@@ -23,17 +23,17 @@ class DesktopIcon extends Component {
   }
 
   toggleRename = (e) => {
-    this.setState({
-      isRename: !this.state.isRename,
+    this.setState(state => ({
+      isRename: !state.isRename,
       renameLabel: e.currentTarget.innerHTML,
-    });
+    }));
   };
 
   toggleRenameContext = () => {
-    this.setState({
-      isRename: !this.state.isRename,
+    this.setState(state => ({
+      isRename: !state.isRename,
       renameLabel: this.props.iconTitle,
-    });
+    }));
   };
 
   contextMenu = (e) => {
@@ -109,7 +109,7 @@ class DesktopIcon extends Component {
             {iconTitle}
             <DialogModal
               isOpened={this.state.isRename}
-              isBackdrop={!!true}
+              isBackdrop
               className="modal-sm"
               confirmTitle="Rename..."
               confirmContent={this.renderRenameInput()}

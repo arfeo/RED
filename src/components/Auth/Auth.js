@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import PropTypes from 'prop-types';
 
 import AuthForm from './AuthForm/AuthForm';
-import App from './../../containers/App';
+import App from '../../containers/App';
 
-class Auth extends Component {
+class Auth extends React.Component {
   constructor(props) {
     super(props);
 

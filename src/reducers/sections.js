@@ -1,5 +1,5 @@
-import { ACTIONS } from './../utils/constants';
-import { saveData } from './../utils/storage';
+import { ACTIONS } from '../utils/constants';
+import { saveData } from '../utils/storage';
 
 export default function sections(state = [], { type, payload }) {
   switch (type) {

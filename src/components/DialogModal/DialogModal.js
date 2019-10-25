@@ -1,13 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+
+import {
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+} from 'reactstrap';
 
 import './DialogModal.scss';
 
 class DialogModal extends React.Component {
   state = {
     modal: this.props.isOpened,
-  }
+  };
 
   componentWillReceiveProps(newProps) {
     this.setState({

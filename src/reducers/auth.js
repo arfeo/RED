@@ -1,5 +1,5 @@
-import { ACTIONS } from './../utils/constants';
-import { getData, saveData } from './../utils/storage';
+import { ACTIONS } from '../utils/constants';
+import { getData, saveData } from '../utils/storage';
 
 const initState = {
   login: getData('login') || '',

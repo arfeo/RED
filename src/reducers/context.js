@@ -1,4 +1,4 @@
-import { ACTIONS } from './../utils/constants';
+import { ACTIONS } from '../utils/constants';
 
 const initState = {
   active: false,

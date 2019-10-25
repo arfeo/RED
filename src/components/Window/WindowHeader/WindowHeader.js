@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import WindowButtons from './../WindowButtons/WindowButtons';
+import WindowButtons from '../WindowButtons/WindowButtons';
 
 import './WindowHeader.scss';
 

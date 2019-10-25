@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { ResizableBox } from 'react-resizable';
 
-import Settings from './../../../sections/Settings/Settings';
-import Reference from './../../../sections/Reference/Reference';
-import { ACTIONS } from './../../../utils/constants';
+import Settings from '../../../sections/Settings/Settings';
+import Reference from '../../../sections/Reference/Reference';
+
+import { ACTIONS } from '../../../utils/constants';
 
 import './WindowContainer.scss';
 
@@ -32,7 +33,9 @@ const WindowContainer = (props) => {
       default:
       {
         return (
-          <div>Section content</div>
+          <div>
+            Section content
+          </div>
         );
       }
     }

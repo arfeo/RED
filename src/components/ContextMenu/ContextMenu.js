@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import ContextMenuItem from './ContextMenuItem';
 
-import { ACTIONS } from './../../utils/constants';
+import { ACTIONS } from '../../utils/constants';
 
 import './ContextMenu.scss';
 
@@ -30,13 +30,12 @@ const ContextMenu = (props) => {
       return (
         <div id="context" className="context-menu" style={{ left: `${x + 20}px`, top: `${y + 20}px` }}>
           {items.map((item, key) => {
-            const k = key;
             return (
               <ContextMenuItem
                 name={item.name}
                 handleClick={item.click}
                 hideContext={hideContext}
-                key={k}
+                key={key.toString()}
               />
             );
           })}

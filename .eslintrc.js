@@ -48,10 +48,14 @@ module.exports = {
       "declaration",
       { "allowArrowFunctions": true }
     ],
+    "jsx-a11y/label-has-for": [ "error", {
+      "required": {
+        "some": [ "nesting", "id"  ]
+      }
+    }],
     "jsx-a11y/aria-props": 2,
     "jsx-a11y/heading-has-content": 0,
     "jsx-a11y/href-no-hash": 2,
-    "jsx-a11y/label-has-for": 2,
     "jsx-a11y/click-events-have-key-events": 0,
     "jsx-a11y/role-has-required-aria-props": 2,
     "jsx-a11y/role-supports-aria-props": 2,
@@ -63,6 +67,8 @@ module.exports = {
     "spaced-comment": 1,
     "no-use-before-define": 0,
     "prefer-template": 2,
+    "react/button-has-type": 0,
+    "react/destructuring-assignment": 0,
     "react/jsx-filename-extension": 0,
     "react/jsx-no-target-blank": 0,
     "react/require-extension": 0,

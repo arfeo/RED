@@ -1,4 +1,4 @@
-import { ACTIONS } from './../utils/constants';
+import { ACTIONS } from '../utils/constants';
 
 export default function home(state = false, { type, payload }) {
   switch (type) {
