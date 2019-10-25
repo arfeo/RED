@@ -2,9 +2,9 @@
 
 Desktop environment built with React/Redux.
 
-Live demo: http://tests.arfeo.net/red/
+Live demo: https://tests.arfeo.net/red/
 
-Demo credentials: `admin` / `admin`
+Demo credentials: any.
 
 ![Interface](http://static.arfeo.net/red/interface.png "Interface")
 
